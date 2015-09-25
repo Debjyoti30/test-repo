@@ -6,12 +6,12 @@
         <th>Title</th>
         <th>Price</th>
     </tr>
-    @foreach (var good in Model)
+    @foreach (var item in Model)
     {
         <tr>
-            <th><img src="@good.Image" /></th>
-            <th>@good.Title</th>
-            <th>@good.Price</th>
+            <th><img src="@item.Image" height="42" width="42"/></th>
+            <th>@item.Title</th>
+            <th>@item.Price</th>
         </tr>
     }
 </table>

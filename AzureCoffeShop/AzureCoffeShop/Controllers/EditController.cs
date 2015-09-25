@@ -23,22 +23,16 @@ namespace Controllers
 
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult CofeeList()
-        {
             var list = coffeeService.GetAll();
-
             return View(list);
         }
 
-        public ActionResult CoffeeEntry(string goodId)
+        public ActionResult CoffeeEntry(string id)
         {
             return View(
-                string.IsNullOrEmpty(goodId) ?
+                string.IsNullOrEmpty(id) ?
                     new Coffee { PartitionKey = "" } :
-                    coffeeService.GetById(goodId));
+                    coffeeService.GetById(id));
         }
 
         [HttpPost]
@@ -46,12 +40,13 @@ namespace Controllers
         {
             if (cover != null)
             {
+                entry.PartitionKey = "";
                 blobService.UploadByStream(entry.RowKey, cover.InputStream);
             }
 
             coffeeService.InsertOrReplace(entry);
 
-            return RedirectToAction("CoffeeList");
+            return RedirectToAction("Index");
         }
 
         public ActionResult CoffeeDelete(string id)

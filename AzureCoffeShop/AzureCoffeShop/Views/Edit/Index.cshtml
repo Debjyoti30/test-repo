@@ -1,6 +1,34 @@
-﻿@{
+﻿@*@{
     ViewBag.Title = "Edit Page";
     Layout = "~/Views/Edit/_Layout.cshtml";
 }
 
+<h2>@ViewBag.Title</h2>*@
+
+
+@model List<core.Table.Entry.Coffee>
+
+@{
+    ViewBag.Title = "Coffee list";
+    Layout = "~/Views/Edit/_Layout.cshtml";
+}
+
 <h2>@ViewBag.Title</h2>
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Price</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Title</td>
+            <td>@item.Price</td>
+            <td>@Html.ActionLink("edit", "CoffeeEntry", new { id = item.RowKey })</td>
+            <td>@Html.ActionLink("delete", "CoffeeDelete", new { id = item.RowKey })</td>
+        </tr>
+    }
+</table>
+
+@Html.ActionLink("new", "CoffeeEntry")
