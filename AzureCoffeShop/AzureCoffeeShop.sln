@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureCoffeShop", "AzureCoffeShop\AzureCoffeShop.csproj", "{FF0A4C04-09BA-434A-BDF6-AB25C735E429}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "core", "core\core.csproj", "{AAD07932-79FB-450B-B58C-62D5DD6B722F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{FF0A4C04-09BA-434A-BDF6-AB25C735E429}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF0A4C04-09BA-434A-BDF6-AB25C735E429}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF0A4C04-09BA-434A-BDF6-AB25C735E429}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAD07932-79FB-450B-B58C-62D5DD6B722F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAD07932-79FB-450B-B58C-62D5DD6B722F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAD07932-79FB-450B-B58C-62D5DD6B722F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAD07932-79FB-450B-B58C-62D5DD6B722F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,23 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using msswit2013_lab1.core.Blob;
-using msswit2013_lab1.core.Table.Entry;
-using msswit2013_lab1.core.Table.Service;
-using msswit2013_lab1.web.Models;
+using core.Blob;
+using core.Table.Entry;
+using core.Table.Service;
+using AzureCoffeShop.Models;
 
-namespace namespace AzureCoffeShop.Controllers
+namespace AzureCoffeShop.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly CategoryService categoryService;
-        private readonly GoodService goodService;
+        private readonly CoffeeService coffeeService;
         private readonly BlobService blobService;
 
         public HomeController()
         {
-            categoryService = new CategoryService();
-            goodService = new GoodService();
+            coffeeService = new CoffeeService();
             blobService = new BlobService();
         }
 
@@ -28,38 +26,22 @@ namespace namespace AzureCoffeShop.Controllers
             return View();
         }
 
-        public ActionResult Category(object id)
-        {
-            return View("Index", id);
-        }
-
-        public ActionResult Good()
+        public ActionResult Coffee()
         {
             return View();
         }
 
         [ChildActionOnly]
-        public ActionResult CategoriesList()
+        public ActionResult CoffeeList()
         {
-            var list = categoryService.GetAll();
-
-            return View(list);
-        }
-
-        [ChildActionOnly]
-        public ActionResult GoodsList(string id)
-        {
-            var list = string.IsNullOrEmpty(id) ?
-                new List<GoodModel>() :
-                goodService.GetByCategoryId(id, true)
-                    .Select(i => new GoodModel
+            var list = coffeeService.GetAll()
+                    .Select(i => new CoffeeModel
                     {
                         Title = i.Title,
                         Price = i.Price,
                         Image = blobService.GetBlobUrl(i.RowKey)
                     })
                     .ToList();
-
             return View(list);
         }
     }
