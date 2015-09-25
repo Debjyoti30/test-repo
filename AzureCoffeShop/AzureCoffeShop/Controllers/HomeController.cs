@@ -3,28 +3,64 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using msswit2013_lab1.core.Blob;
+using msswit2013_lab1.core.Table.Entry;
+using msswit2013_lab1.core.Table.Service;
+using msswit2013_lab1.web.Models;
 
-namespace AzureCoffeShop.Controllers
+namespace namespace AzureCoffeShop.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly CategoryService categoryService;
+        private readonly GoodService goodService;
+        private readonly BlobService blobService;
+
+        public HomeController()
+        {
+            categoryService = new CategoryService();
+            goodService = new GoodService();
+            blobService = new BlobService();
+        }
+
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Category(object id)
         {
-            ViewBag.Message = "Your application description page.";
+            return View("Index", id);
+        }
 
+        public ActionResult Good()
+        {
             return View();
         }
 
-        public ActionResult Contact()
+        [ChildActionOnly]
+        public ActionResult CategoriesList()
         {
-            ViewBag.Message = "Your contact page.";
+            var list = categoryService.GetAll();
 
-            return View();
+            return View(list);
+        }
+
+        [ChildActionOnly]
+        public ActionResult GoodsList(string id)
+        {
+            var list = string.IsNullOrEmpty(id) ?
+                new List<GoodModel>() :
+                goodService.GetByCategoryId(id, true)
+                    .Select(i => new GoodModel
+                    {
+                        Title = i.Title,
+                        Price = i.Price,
+                        Image = blobService.GetBlobUrl(i.RowKey)
+                    })
+                    .ToList();
+
+            return View(list);
         }
     }
 }
