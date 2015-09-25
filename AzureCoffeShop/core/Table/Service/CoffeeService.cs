@@ -24,43 +24,6 @@ namespace core.Table.Service
                 .OrderBy(i => i.Title).ToList();
         }
 
-        public List<Coffee> GetByCategoryId(string categoryId,
-            bool? isApprover = null)
-        {
-            string filter;
-            if (isApprover.HasValue)
-            {
-                filter = TableQuery.CombineFilters(
-                    TableQuery.GenerateFilterCondition(
-                        "PartitionKey",
-                        QueryComparisons.Equal,
-                        categoryId),
-                    TableOperators.And,
-                    TableQuery.GenerateFilterConditionForBool(
-                        "IsApproved",
-                        QueryComparisons.Equal,
-                        isApprover.Value)
-                    );
-            }
-            else
-            {
-                filter = TableQuery.GenerateFilterCondition(
-                    "PartitionKey",
-                    QueryComparisons.Equal,
-                    categoryId);
-            }
-
-            var query = new TableQuery<Coffee>()
-                .Where(filter);
-            return Table.ExecuteQuery(query).ToList()
-                .OrderBy(i => i.Title).ToList();
-        }
-
-        public Coffee GetById(string categoryId, string CoffeeId)
-        {
-            return (Coffee)GetByIdBase<Coffee>(categoryId, CoffeeId);
-        }
-
         public Coffee GetById(string CoffeeId)
         {
             var query = new TableQuery<Coffee>()

@@ -2,14 +2,13 @@
 
 @{
     ViewBag.Title = "Coffee shop";
-    Layout = "~/Views/Home/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>@ViewBag.Title</h2>
 
 <table>
     <tr>
-        <td valign="top">@{ Html.RenderAction("CategoriesList"); }</td>
-        <td valign="top">@{ Html.RenderAction("GoodsList", new { id = Model }); }</td>
+        <td valign="top">@{ Html.RenderAction("CoffeeList"); }</td>
     </tr>
 </table>

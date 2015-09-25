@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using core.Blob;
+using core.Table.Service;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -16,6 +14,9 @@ namespace AzureCoffeShop
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            new CoffeeService().Initialize();
+            new BlobService().Initialize();
         }
     }
 }
