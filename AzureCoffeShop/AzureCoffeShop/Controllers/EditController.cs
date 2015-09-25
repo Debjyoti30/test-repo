@@ -53,7 +53,7 @@ namespace Controllers
         {
             coffeeService.DeleteById(id);
 
-            return RedirectToAction("CoffeeList");
+            return RedirectToAction("Index");
         }
     }
 }
