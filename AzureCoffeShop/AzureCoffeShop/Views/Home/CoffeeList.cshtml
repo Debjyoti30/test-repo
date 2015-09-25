@@ -4,14 +4,12 @@
     <tr>
         <th>Image</th>
         <th>Title</th>
-        <th>Price</th>
     </tr>
     @foreach (var item in Model)
     {
         <tr>
             <th><img src="@item.Image" height="42" width="42"/></th>
             <th>@item.Title</th>
-            <th>@item.Price</th>
         </tr>
     }
 </table>
