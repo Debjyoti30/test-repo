@@ -258,7 +258,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Home\CoffeeList.cshtml" />
-    <Content Include="Views\Edit\CoffeeList.cshtml" />
     <Content Include="Views\Edit\_Layout.cshtml" />
     <Content Include="Views\Edit\Index.cshtml" />
     <Content Include="Views\Edit\CoffeeEntry.cshtml" />

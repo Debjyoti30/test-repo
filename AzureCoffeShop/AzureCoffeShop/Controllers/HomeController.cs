@@ -38,7 +38,6 @@ namespace AzureCoffeShop.Controllers
                     .Select(i => new CoffeeModel
                     {
                         Title = i.Title,
-                        Price = i.Price,
                         Image = blobService.GetBlobUrl(i.RowKey)
                     })
                     .ToList();

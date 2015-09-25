@@ -16,6 +16,5 @@ namespace core.Table.Entry
         }
 
         public string Title { get; set; }
-        public int Price { get; set; }
     }
 }

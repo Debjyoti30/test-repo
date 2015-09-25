@@ -38,9 +38,10 @@ namespace Controllers
         [HttpPost]
         public ActionResult CoffeeEntry(Coffee entry, HttpPostedFileBase cover)
         {
+            entry.PartitionKey = "";
+
             if (cover != null)
             {
-                entry.PartitionKey = "";
                 blobService.UploadByStream(entry.RowKey, cover.InputStream);
             }
 
