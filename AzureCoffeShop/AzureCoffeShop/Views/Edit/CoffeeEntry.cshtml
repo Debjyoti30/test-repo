@@ -1,0 +1,28 @@
+﻿@model core.Table.Entry.Coffee
+
+@{
+    ViewBag.Title = "Coffee entry";
+    Layout = "~/Views/Edit/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("CoffeeEntry", "Edit", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div>
+        @Html.ValidationSummary()
+    </div>
+    @Html.HiddenFor(m => Model.PartitionKey)
+    @Html.HiddenFor(m => Model.RowKey)
+    <table>
+        <tr>
+            <th>@Html.LabelFor(m => Model.Title)</th>
+            <td>@Html.EditorFor(m => Model.Title)</td>
+        </tr>
+        <tr>
+            <th>Image</th>
+            <td><input type="file" id="cover" name="cover" /></td>
+        </tr>
+    </table>
+    <input type="submit" value="submit" />
+}

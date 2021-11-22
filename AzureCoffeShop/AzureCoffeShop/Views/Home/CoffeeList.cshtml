@@ -1,0 +1,15 @@
+﻿@model List<AzureCoffeShop.Models.CoffeeModel>
+
+<table>
+    <tr>
+        <th>Image</th>
+        <th>Title</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th><img src="@item.Image" height="42" width="42"/></th>
+            <th>@item.Title</th>
+        </tr>
+    }
+</table>

@@ -1,0 +1,14 @@
+﻿@model string
+
+@{
+    ViewBag.Title = "Coffee shop";
+    Layout = "~/Views/Home/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table>
+    <tr>
+        <td valign="top">@{ Html.RenderAction("CoffeeList"); }</td>
+    </tr>
+</table>
